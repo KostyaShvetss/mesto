@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Место</title>
+</head>
+
+<body class="root">
+  <div class="page">
+    <header class="header">
+      <img src="./images/logo.svg" alt="Логотип Mesto" class="header__logo">
+    </header>
+    <main>
+      <section class="profile">
+        <div class="profile__person">
+          <img src="./images/Жак-Ив Кусто.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+          <article class="profile__info">
+            <p class="profile__name">Жак-Ив Кусто</p>
+            <p class="profile__bio">Исследователь океана</p>
+            <button type="button" class="edit-button"></button>
+          </article>
+        </div>
+        <button type="button" class="add-button"></button>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img src="./images/Карачаево-Черкессия.jpg" alt="Карачаево-Черкессия" class="element__image">
+          <div class="element__bar">
+            <p class="element__name">Карачаевск</p>
+            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Гора Эльбрус.jpg" alt="Гора Эльбрус" class="element__image">
+          <div class="element__bar">
+            <p class="element__name">Гора Эльбрус</p>
+            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Домбай.jpg" alt="Домбай" class="element__image">
+          <div class="element__bar">
+            <p class="element__name">Домбай</p>
+            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Гора Эльбрус.jpg" alt="Гора Эльбрус" class="element__image">
+          <div class="element__bar">
+            <p class="element__name">Гора Эльбрус</p>
+            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Домбай.jpg" alt="Домбай" class="element__image">
+          <div class="element__bar">
+            <p class="element__name">Домбай</p>
+            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Карачаево-Черкессия.jpg" alt="Карачаево-Черкессия" class="element__image">
+          <div class="element__bar">
+            <p class="element__name">Карачаево-Черкессия</p>
+            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      </footer>
+    </main>
+  </div>
+  <section class="popup popup_closed">
+    <div class="popup__body">
+      <div class="popup__container">
+        <button class="close-button"></button>
+        <p class="popup__edit">Редактировать профиль</p>
+        <form class="popup__form">
+          <input type="text" class="popup__name" name="Name" value="Жак-Ив Кусто">
+          <input type="text" class="popup__bio" name="Description" value="Исследователь океана">
+          <button class="save-button" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script src="./scripts/script.js"></script>
+</body>
+
+</html>

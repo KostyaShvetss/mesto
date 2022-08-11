@@ -1,0 +1,27 @@
+.profile__person {
+  display: flex;
+  gap: 30px;
+}
+@media screen and (max-width: 1049px) {
+  .profile__person {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 894px) {
+  .profile__person {
+    gap: 5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile__person {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 395px) {
+  .profile__person {
+    gap: 25px;
+  }
+}

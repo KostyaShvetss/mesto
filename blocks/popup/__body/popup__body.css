@@ -1,0 +1,13 @@
+.popup__body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 100%;
+}
+
+@media screen and (max-width: 469px) {
+  .popup__body {
+    margin: 0 auto;
+  }
+}
