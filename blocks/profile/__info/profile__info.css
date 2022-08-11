@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas:
   "name button"
-  "bio bio";
+  "bio bio" ;
   gap: 8px 26px;
 }
 
@@ -16,6 +16,6 @@
   .profile__info {
     grid-template-areas:
     ". name button"
-    "bio bio bio";
+    "bio bio bio" ;
   }
 }
