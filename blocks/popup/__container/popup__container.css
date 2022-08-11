@@ -17,6 +17,5 @@
     max-width: calc(100% - 2*22px);
     min-width: 282px;
     min-height: 322px;
-    border: 1px solid red;
   }
 }

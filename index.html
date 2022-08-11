@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
+
 <body class="root">
   <div class="page">
     <header class="header">
@@ -17,8 +19,8 @@
         <div class="profile__person">
           <img src="./images/Жак-Ив Кусто.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
           <article class="profile__info">
-              <p class="profile__name">Жак-Ив Кусто</p>
-              <p class="profile__bio">Исследователь океана</p>
+            <p class="profile__name">Жак-Ив Кусто</p>
+            <p class="profile__bio">Исследователь океана</p>
             <button type="button" class="edit-button"></button>
           </article>
         </div>
@@ -73,18 +75,20 @@
       </footer>
     </main>
   </div>
-  <!-- СДЕЛАТЬ КРЕСТИК -->
-  <section class="popup">
+  <section class="popup popup_closed">
     <div class="popup__body">
       <div class="popup__container">
         <button class="close-button"></button>
         <p class="popup__edit">Редактировать профиль</p>
-        <input type="text" class="popup__name" name="Name" value="Жак-Ив Кусто">
-        <input type="text" class="popup__bio" name="Description" value="Исследователь океана">
-        <button class="save-button">Сохранить</button>
+        <form class="popup__form">
+          <input type="text" class="popup__name" name="Name" value="Жак-Ив Кусто">
+          <input type="text" class="popup__bio" name="Description" value="Исследователь океана">
+          <button class="save-button" type="submit">Сохранить</button>
+        </form>
       </div>
     </div>
   </section>
-  <script src=""></script>
+  <script src="./scripts/script.js"></script>
 </body>
+
 </html>
