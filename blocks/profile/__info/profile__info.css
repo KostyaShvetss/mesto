@@ -1,0 +1,21 @@
+.profile__info {
+  display: grid;
+  grid-template-areas:
+  "name button"
+  "bio bio" ;
+  gap: 8px 26px;
+}
+
+@media screen and (max-width: 894px) {
+  .profile__info {
+    gap: 5px 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile__info {
+    grid-template-areas:
+    ". name button"
+    "bio bio bio" ;
+  }
+}

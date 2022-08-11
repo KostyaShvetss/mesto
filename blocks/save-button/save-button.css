@@ -1,0 +1,22 @@
+.save-button {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  min-height: 50px;
+}
+
+.save-button:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 469px) {
+  .save-button {
+    max-height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

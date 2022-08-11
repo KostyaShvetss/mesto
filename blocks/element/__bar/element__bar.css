@@ -1,0 +1,6 @@
+.element__bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 25px 15px 23px 21px;
+}

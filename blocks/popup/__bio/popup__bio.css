@@ -1,0 +1,15 @@
+.popup__bio {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border: 1px solid #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  padding: 0 0 10px 0;
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 469px) {
+  .popup__bio {
+    margin-bottom: 42px;
+  }
+}
