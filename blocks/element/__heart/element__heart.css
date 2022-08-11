@@ -1,0 +1,10 @@
+.element__heart {
+  max-width: 22px;
+  max-height: 22px;
+  align-self: center;
+  justify-self: flex-start;
+}
+
+.element__heart:hover {
+  opacity: .6;
+}
