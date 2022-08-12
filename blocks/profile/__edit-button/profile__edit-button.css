@@ -1,5 +1,5 @@
-.edit-button {
-  background-image: url(../../images/edit\ button.svg);
+.profile__edit-button {
+  background-image: url(../../../images/edit\ button.svg);
   grid-area: button;
   align-self: end;
   border: 1px solid #fff;
@@ -11,19 +11,19 @@
   margin-bottom: 10px;
 }
 
-.edit-button:hover{
+.profile__edit-button:hover{
   opacity: .8;
   cursor: pointer;
 }
 
 @media screen and (max-width: 894px) {
-  .edit-button {
+  .profile__edit-button {
     margin: 0;
   }
 }
 
 @media screen and (max-width: 395px) {
-  .edit-button {
+  .profile__edit-button {
     align-self: center;
     justify-self: start;
     padding: 8.5px;

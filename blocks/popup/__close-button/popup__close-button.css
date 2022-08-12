@@ -1,5 +1,5 @@
-.close-button {
-  background-image: url(../../images/Close\ Icon.svg);
+.popup__close-button {
+  background-image: url(../../../images/Close\ Icon.svg);
   background-position: center center;
   min-width: 32px;
   min-height: 32px;
@@ -14,18 +14,18 @@
   background-size: 32px 32px;
 }
 
-.close-button:hover {
+.popup__close-button:hover {
   opacity: .7;
 }
 
 @media screen and (max-width: 532px) {
-  .close-button {
+  .popup__close-button {
     right: -15px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .close-button {
+  .popup__close-button {
     min-width: 20px;
     min-height: 20px;
     background-size: 20px 20px;
