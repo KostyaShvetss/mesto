@@ -15,58 +15,58 @@
     <main>
       <section class="profile">
         <div class="profile__person">
-          <img src="./images/Jacques-Yves-Cousteau.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+          <img src="./images/Jacques-Yves-Cousteau.jpg" alt="Аватар пользователя" class="profile__avatar">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__bio">Исследователь океана</p>
-            <button type="button" class="profile__edit-button"></button>
+            <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
           </div>
         </div>
-        <button type="button" class="profile__add-button"></button>
+        <button type="button" class="profile__add-button" aria-label="Добавить"></button>
       </section>
       <section class="elements">
-        <div class="element">
+        <article class="element">
           <img src="./images/karachay-cherkessia.jpg" alt="Карачаево-Черкессия" class="element__image">
           <div class="element__bar">
             <h2 class="element__name">Карачаевск</h2>
-            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+            <button aria-label="Кнопка 'Мне нравится'" class="element__heart"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/mount-elbrus.jpg" alt="Гора Эльбрус" class="element__image">
           <div class="element__bar">
             <h2 class="element__name">Гора Эльбрус</h2>
-            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+            <button aria-label="Кнопка 'Мне нравится'" class="element__heart"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
           <div class="element__bar">
             <h2 class="element__name">Домбай</h2>
-            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+            <button aria-label="Кнопка 'Мне нравится'" class="element__heart"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/mount-elbrus.jpg" alt="Гора Эльбрус" class="element__image">
           <div class="element__bar">
             <h2 class="element__name">Гора Эльбрус</h2>
-            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+            <button aria-label="Кнопка 'Мне нравится'" class="element__heart"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
           <div class="element__bar">
             <h2 class="element__name">Домбай</h2>
-            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+            <button aria-label="Кнопка 'Мне нравится'" class="element__heart"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img src="./images/karachay-cherkessia.jpg" alt="Карачаево-Черкессия" class="element__image">
           <div class="element__bar">
             <h2 class="element__name">Карачаево-Черкессия</h2>
-            <img src="./images/Heart.svg" alt="Кнопка 'Мне нравится'" class="element__heart">
+            <button aria-label="Кнопка 'Мне нравится'" class="element__heart"></button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
     <footer class="footer">
@@ -74,11 +74,11 @@
     </footer>
     <div class="popup">
         <div class="popup__container">
-          <button class="popup__close-button" type="button"></button>
+          <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="popup-form">
-            <input type="text" class="popup__name" name="name" value="Жак-Ив Кусто">
-            <input type="text" class="popup__bio" name="description" value="Исследователь океана">
+            <input type="text" class="popup__input popup__input_data_name" name="name" required>
+            <input type="text" class="popup__input popup__input_data_bio" name="description" required>
             <button class="popup__save-button" type="submit">Сохранить</button>
           </form>
         </div>

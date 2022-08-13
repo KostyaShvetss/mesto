@@ -2,11 +2,12 @@
   display: flex;
   gap: 30px;
 }
-@media screen and (max-width: 1049px) {
+
+/* @media screen and (max-width: 1058px) {
   .profile__person {
     justify-content: center;
   }
-}
+} */
 
 @media screen and (max-width: 894px) {
   .profile__person {

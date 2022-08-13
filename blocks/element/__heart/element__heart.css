@@ -1,10 +1,17 @@
 .element__heart {
-  max-width: 22px;
-  max-height: 22px;
+  min-width: 22px;
+  min-height: 22px;
   align-self: center;
   justify-self: flex-start;
+  background-image: url(../../../images/Heart.svg);
+  background-size: 22px 22px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .element__heart:hover {
-  opacity: .6;
+  opacity: .5;
+  cursor: pointer;
 }

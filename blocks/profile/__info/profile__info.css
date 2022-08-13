@@ -3,7 +3,7 @@
   grid-template-areas:
   "name button"
   "bio bio";
-  gap: 8px 26px;
+  gap: 8px 20px;
 }
 
 @media screen and (max-width: 894px) {
