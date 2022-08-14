@@ -19,7 +19,7 @@
 
 @media screen and (max-width: 640px) {
   .profile {
-    max-width: calc(100vw - 150px);
+    max-width: calc(100vw - 50px);
   }
 }
 

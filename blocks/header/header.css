@@ -13,20 +13,14 @@
 @media screen and (max-width: 768px) {
   .header {
     display: flex;
-    justify-content: center;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .header {
-    max-width: calc(100vw - 150px);
+    justify-content: start;
+    max-width: 100vw;
   }
 }
 
 @media screen and (max-width: 320px) {
   .header {
     min-width: 100%;
-    justify-content: start;
     margin-top: 28px;
   }
 }

@@ -4,9 +4,12 @@
   font-size: 18px;
   line-height: 22px;
   grid-area: bio;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 778px) {
   .profile__bio {
     text-align: center;
   }

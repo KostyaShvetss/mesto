@@ -3,19 +3,13 @@
   gap: 30px;
 }
 
-/* @media screen and (max-width: 1058px) {
-  .profile__person {
-    justify-content: center;
-  }
-} */
-
 @media screen and (max-width: 894px) {
   .profile__person {
     gap: 5px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 778px) {
   .profile__person {
     flex-direction: column;
   }

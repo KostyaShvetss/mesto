@@ -12,10 +12,11 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 778px) {
   .profile__info {
     grid-template-areas:
     ". name button"
     "bio bio bio";
+    grid-template-columns: repeat(3, 1fr);
   }
 }
