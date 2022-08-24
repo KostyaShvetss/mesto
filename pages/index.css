@@ -18,7 +18,7 @@
 @import url(../blocks/element/__bar/element__bar.css);
 @import url(../blocks/element/__name/element__name.css);
 @import url(../blocks/element/__heart/element__heart.css);
-/* @import url(../blocks/element/__heart/_active/element__heart_active.css); */
+@import url(../blocks/element/__heart/_active/element__heart_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);
