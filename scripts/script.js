@@ -6,18 +6,17 @@ let profileName = document.querySelector('.profile__name');
 let profileBio = document.querySelector('.profile__bio');
 let nameInput = popup.querySelector('.popup__input_data_name');
 let bioInput = popup.querySelector('.popup__input_data_bio');
+let profileLikeButton = document.querySelectorAll('.element__heart');
 
-const openPopup = function () {
+const openPopup = () => {
   nameInput.value = profileName.textContent;
   bioInput.value = profileBio.textContent;
   popup.classList.add('popup_opened');
 }
 
-const closePopup = function () {
-  popup.classList.remove('popup_opened');
-}
+const closePopup = () => popup.classList.remove('popup_opened');
 
-function formSubmitHandler(evt) {
+const formSubmitHandler = (evt) => {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileBio.textContent = bioInput.value;
@@ -27,3 +26,4 @@ function formSubmitHandler(evt) {
 profileEditButton.addEventListener('click', openPopup);
 popupCloseButton.addEventListener('click', closePopup);
 popupForm.addEventListener('submit', formSubmitHandler);
+profileLikeButton.addEventListener('click', pressLike)
