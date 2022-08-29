@@ -5,4 +5,7 @@
   color: #000;
   max-width: 282px;
   border-radius: 10px 10px;
+  position: relative;
+  max-width: 282px;
+  max-height: 361px;
 }
