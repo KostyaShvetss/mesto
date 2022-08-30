@@ -6,7 +6,6 @@ const ImagePopup = document.querySelector('.popup-image');
 // Кнопки
 const profileEditButton = document.querySelector('.profile__edit-button');
 const closeButtons = document.querySelectorAll('.popup__close');
-console.log(closeButtons);
 const profileAddButton = document.querySelector('.profile__add-button');
 // Формы и инпуты
 const popupForm = profilePopup.querySelector('.popup__form');
