@@ -30,11 +30,11 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup profile-popup">
         <div class="popup__container">
-          <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
+          <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="popup-form">
+          <form class="popup__form" name="profile-popup__form">
               <input type="text" class="popup__input popup__input_data_name" name="name" required>
               <input type="text" class="popup__input popup__input_data_bio" name="description" required>
             <button class="popup__save-button" type="submit">Сохранить</button>
@@ -43,9 +43,9 @@
     </div>
       <div class="popup edit-popup">
       <div class="popup__container">
-        <button class="popup__close-button popup__close-button-edit" type="button" aria-label="Закрыть окно"></button>
+        <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form edit-popup__form" name="popup-form">
+        <form class="popup__form edit-popup__form" name="edit-popup__form">
             <input type="text" class="popup__input popup__input_name" name="name" required placeholder="Название">
             <input type="text" class="popup__input popup__input_url" name="description" required placeholder="Ссылка на картинку">
           <button class="popup__save-button" type="submit">Создать</button>
@@ -54,12 +54,17 @@
   </div>
   <div class="popup popup-image">
     <article class="popup-image__container">
-      <button class="popup__close-button popup-image__close-button" arua-label="Закрыть картинку" type="button"></button>
+      <button class="popup__close" aria-label="Закрыть картинку" type="button"></button>
       <img src="." alt="" class="popup-image__content">
       <p class="popup-image__caption"></p>
     </article>
   </div>
 <!-- Для ревьюера: на 2 карточке картинка просто сжимается, нигде не смог найти толкового гайда, как обрезать картинку посредством css, можешь, пожалуйста, объянить, как это лучше сделать -->
+<!-- 2. Увидел комментарий в ревью, что с карточками всё выглядит нормально, но если, допустим, я
+  загружаю свою фотографию (как пример фотографии с соотношением сторон, когда все ломается), то
+  все уже явно не так гладко, хотел бы узнать, как адаптировать разныее фотографии,
+  чтоб не выглядело коряво -->
+  <!-- Вот пример фото: https://sun9-65.userapi.com/impg/Ch_WiUCaPVSHwH6t447BmR97k3gBH0H6e2K_aA/yrQlMc0ZF4c.jpg?size=1437x2160&quality=95&sign=8d72680db35a4d864a0f3193aa4d8a17&type=album -->
   <template class="template">
     <article class="element">
       <button aria-label="Удалить карточку" class="element__trash-bin" type="button"></button>
