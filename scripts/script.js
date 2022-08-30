@@ -84,7 +84,11 @@ const сreateCard = (name, url) => {
     popupCaption.textContent = name;
     openPopup(ImagePopup);
   });
-  imageContent.addEventListener('click', () => closePopup(ImagePopup));
+  // На самом деле эта функция навешивает обработчик не на крестик, а на картинку, чтоб
+  // попап можно было закрыть и кликом на саму картинку, но так как этого не требовалось,
+  // убираю это функцию (пока что просто закомментирую, чтоб было понятно, о чем речь, после следующей итерации удалю)
+  // Спасибо за оперативную проверку!
+  // imageContent.addEventListener('click', () => closePopup(ImagePopup));
   return templateCard;
 }
 
