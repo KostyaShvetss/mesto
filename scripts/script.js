@@ -6,7 +6,6 @@ const ImagePopup = document.querySelector('.popup-image');
 // Кнопки
 const profileEditButton = document.querySelector('.profile__edit-button');
 const closeButtons = document.querySelectorAll('.popup__close');
-console.log(closeButtons);
 const profileAddButton = document.querySelector('.profile__add-button');
 // Формы и инпуты
 const popupForm = profilePopup.querySelector('.popup__form');
@@ -22,7 +21,9 @@ const elements = document.querySelector('.elements');
 // Темплейт
 const template = document.querySelector('.template').content;
 const imageContent = document.querySelector('.popup-image__content');
-const popupCaption = document.querySelector('.popup-image__caption')
+const popupCaption = document.querySelector('.popup-image__caption');
+// Контейнер для карточек
+const cardContainer = document.querySelector('.elements');
 // Массив с данными для карточек
 const initialCards = [
   {
@@ -55,9 +56,9 @@ const initialCards = [
 // Сохранить форму, добавить новую карточку
 const handleEditFormSubmit = e => {
   e.preventDefault();
+  e.target.reset()
   const name = popupInputName.value;
   const url = popupInputURL.value;
-  e.target.reset()
   elements.prepend(сreateCard(name, url));
   closePopup(editingPopup);
 }
@@ -69,28 +70,19 @@ const сreateCard = (name, url) => {
   templateCard.querySelector('.element__image').src = url;
   templateCard.querySelector('.element__image').alt = name;
   templateCard.querySelector('.element__name').textContent = name;
-  const profileLikeButton = templateCard.querySelector('.element__heart');
-  profileLikeButton.addEventListener('click', () => profileLikeButton.classList.toggle('element__heart_active'));
-// Удаление карточки
-  templateCard.querySelector('.element__trash-bin').addEventListener('click', evt => {
-    const itemElement = evt.target.closest('.element');
-    itemElement.remove();
-  });
-// Открытие попапа картинки
+  // Открытие попапа картинки
   const imageButton = templateCard.querySelector('.element__image');
-  imageButton.addEventListener('click', () => {
-    imageContent.src = url;
-    imageContent.alt = name;
-    popupCaption.textContent = name;
-    openPopup(ImagePopup);
-  });
-  // На самом деле эта функция навешивает обработчик не на крестик, а на картинку, чтоб
-  // попап можно было закрыть и кликом на саму картинку, но так как этого не требовалось,
-  // убираю это функцию (пока что просто закомментирую, чтоб было понятно, о чем речь, после следующей итерации удалю)
-  // Спасибо за оперативную проверку!
-  // imageContent.addEventListener('click', () => closePopup(ImagePopup));
+  imageButton.addEventListener('click', () => openImagePopup(name, url));
   return templateCard;
 }
+// Функция открытия попапа картинки
+function openImagePopup(name, url) {
+  imageContent.src = url;
+  imageContent.alt = name;
+  popupCaption.textContent = name;
+  openPopup(ImagePopup);
+}
+
 
 // Добавление карточек на страницу из массива initialCards
 const defaultCards = initialCards.forEach(item => elements.prepend(сreateCard(item.name, item.url)));
@@ -134,13 +126,27 @@ const closeImagePopup = () => {
   closePopup(ImagePopup);
 }
 
+const pressLike = evt => {
+  if (evt.target.classList.contains('element__heart')) {
+    evt.target.classList.toggle('element__heart_active');
+  }
+}
+
+const deleteCard = evt => {
+  if (evt.target.classList.contains('element__trash-bin')) {
+    const itemElement = evt.target.closest('.element');
+    itemElement.remove();
+  }
+}
+
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
-
 // Обработчики
 profileEditButton.addEventListener('click', openEditPopup);
 profileAddButton.addEventListener('click', openAddPopup);
 popupForm.addEventListener('submit', handleProfileFormSubmit);
 editPopupForm.addEventListener('submit', handleEditFormSubmit);
+cardContainer.addEventListener('click', pressLike);
+cardContainer.addEventListener('click', deleteCard);
