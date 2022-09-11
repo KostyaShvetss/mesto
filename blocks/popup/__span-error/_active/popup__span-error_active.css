@@ -1,0 +1,5 @@
+.popup__span-error_active {
+  visibility: visible;
+  border-bottom: 1px solid red;
+  transition: visibility 0.5s 0 linear;
+}

@@ -5,6 +5,7 @@
   border: 1px solid #fff;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   padding: 0 0 10px 0;
+  max-width: 358px;
 }
 
 .popup__input:first-of-type {
@@ -12,7 +13,7 @@
 }
 
 .popup__input:last-of-type {
-  margin-bottom: 18px;
+  margin-top: 30px;
 }
 
 @media screen and (max-width: 320px) {

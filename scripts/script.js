@@ -1,5 +1,6 @@
 // ПЕРЕМЕННЫЕ
 // Попапы
+const allPopups = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('.profile-popup');
 const editingPopup = document.querySelector('.edit-popup');
 const ImagePopup = document.querySelector('.popup-image');
@@ -83,6 +84,20 @@ function openImagePopup(name, url) {
   openPopup(ImagePopup);
 }
 
+allPopups.forEach((element) => {
+  element.addEventListener('mouseup', evt => {
+   if (evt.target.classList.contains('popup_opened')) {
+    closePopup(element);
+   };
+  });
+});
+
+const handleKey = (evt) => {
+  if (evt.key === 'Escape') {
+    const popupElement = document.querySelector('.popup_opened')
+    closePopup(popupElement);
+  }
+}
 
 // Добавление карточек на страницу из массива initialCards
 const defaultCards = initialCards.forEach(item => elements.prepend(сreateCard(item.name, item.url)));
@@ -90,6 +105,7 @@ const defaultCards = initialCards.forEach(item => elements.prepend(сreateCard(i
 // Отрыктие всплывающего окна, заполнение форм значениями из разметки
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', handleKey);
 }
 
 // Закрыть всплывающее окно

@@ -4,4 +4,6 @@
   min-width: calc(320px - 2*40px);
   cursor: pointer;
   margin: 0 auto;
+  user-select: none;
+  pointer-events: none;
 }
