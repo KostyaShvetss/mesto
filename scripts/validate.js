@@ -1,3 +1,4 @@
+// Функция вызова сообщения об ошибке валидации
 const showInputError =  (element, formInput, errorMessage, validationObject) => {
   const formError = element.querySelector(`.${formInput.id}-error`);
   formInput.classList.add(validationObject.inputErrorClass);
@@ -5,6 +6,7 @@ const showInputError =  (element, formInput, errorMessage, validationObject) => 
   formError.textContent = errorMessage;
 };
 
+// Скрыть сообщение об ошибке валидации
 const hideInputError = (element, formInput, validationObject) => {
   const formError = element.querySelector(`.${formInput.id}-error`);
   formInput.classList.remove(validationObject.inputErrorClass);
@@ -12,6 +14,7 @@ const hideInputError = (element, formInput, validationObject) => {
   formError.classList.remove(validationObject.errorClass);
 };
 
+// Проверка полей ввода на валидность
 const isValid = (form, formInput, validationObject) => {
   if (!formInput.validity.valid) {
     showInputError(form, formInput, formInput.validationMessage, validationObject);
@@ -20,6 +23,7 @@ const isValid = (form, formInput, validationObject) => {
   }
 }
 
+// Навешивание обработчика на массив, переключение кнопки
 const setEventListeners = (form, validationObject) => {
   const inputList = Array.from(form.querySelectorAll(validationObject.inputSelector));
   const buttonElement = form.querySelector(validationObject.submitButtonSelector);
@@ -32,6 +36,7 @@ const setEventListeners = (form, validationObject) => {
   });
 };
 
+// Функция включения валидации
 const enableValidation = (validationObject) => {
   const formList = Array.from(document.querySelectorAll(validationObject.formSelector));
   formList.forEach((form) => {
@@ -42,12 +47,14 @@ const enableValidation = (validationObject) => {
   });
 };
 
+// Проверка поля ввода на валидность
 const hasInvalidInput = (inputList) => {
   return inputList.some((formInput) => {
     return !formInput.validity.valid;
   });
 };
 
+// Функция переключения состояния кнопки
 const toggleButtonState = (inputList, buttonElement, validationObject) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(validationObject.inactiveButtonClass);

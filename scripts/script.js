@@ -84,6 +84,8 @@ function openImagePopup(name, url) {
   openPopup(ImagePopup);
 }
 
+// Пробежаться по всем элементам псведомассива
+// Проверить, открыт ли попап и, если открыть, закрыть
 allPopups.forEach((element) => {
   element.addEventListener('mouseup', evt => {
    if (evt.target.classList.contains('popup_opened')) {
@@ -92,6 +94,7 @@ allPopups.forEach((element) => {
   });
 });
 
+// Создание обработчика нажатия на кнопку Escape
 const handleKey = (evt) => {
   if (evt.key === 'Escape') {
     const popupElement = document.querySelector('.popup_opened')
