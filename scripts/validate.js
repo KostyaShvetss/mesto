@@ -15,7 +15,7 @@ const hideInputError = (element, formInput, validationObject) => {
 };
 
 // Проверка полей ввода на валидность
-const isValid = (form, formInput, validationObject) => {
+const toggleInputError = (form, formInput, validationObject) => {
   if (!formInput.validity.valid) {
     showInputError(form, formInput, formInput.validationMessage, validationObject);
   } else {
@@ -30,7 +30,7 @@ const setEventListeners = (form, validationObject) => {
   toggleButtonState(inputList, buttonElement, validationObject);
   inputList.forEach((formInput) => {
     formInput.addEventListener('input', () => {
-      isValid(form, formInput, validationObject);
+      toggleInputError(form, formInput, validationObject);
       toggleButtonState(inputList, buttonElement, validationObject);
     });
   });
@@ -38,11 +38,8 @@ const setEventListeners = (form, validationObject) => {
 
 // Функция включения валидации
 const enableValidation = (validationObject) => {
-  const formList = Array.from(document.querySelectorAll(validationObject.formSelector));
+  const formList = document.querySelectorAll(validationObject.formSelector);
   formList.forEach((form) => {
-    form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
     setEventListeners(form, validationObject);
   });
 };
@@ -57,10 +54,20 @@ const hasInvalidInput = (inputList) => {
 // Функция переключения состояния кнопки
 const toggleButtonState = (inputList, buttonElement, validationObject) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(validationObject.inactiveButtonClass);
+    disableButton(buttonElement, validationObject);
   } else {
-    buttonElement.classList.remove(validationObject.inactiveButtonClass);
+    enableButton(buttonElement, validationObject);
   }
+}
+
+const disableButton = (buttonElement, validationObject) => {
+  buttonElement.classList.add(validationObject.inactiveButtonClass);
+  buttonElement.setAttribute('disabled', 'true');
+}
+
+const enableButton = (buttonElement, validationObject) => {
+  buttonElement.classList.remove(validationObject.inactiveButtonClass);
+  buttonElement.removeAttribute('disabled', 'true');
 }
 
 

@@ -43,14 +43,14 @@
           </form>
         </div>
     </div>
-      <div class="popup edit-popup">
+      <div class="popup add-popup">
       <div class="popup__container">
         <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form edit-popup__form" name="edit-popup__form" novalidate>
-            <input id="name-input" type="text" class="popup__input popup__input_name" name="name" required placeholder="Название">
+        <form class="popup__form add-popup__form" name="add-popup__form" novalidate>
+            <input id="name-input" type="text" class="popup__input popup__input_name" name="name" minlength="2" maxlength="30" required placeholder="Название">
             <span class="popup__span-error name-input-error"></span>
-            <input id='url-input' type="url" class="popup__input popup__input_url" name="description" minlength="2" maxlength="30" required placeholder="Ссылка на картинку">
+            <input id='url-input' type="url" class="popup__input popup__input_url" name="description" required placeholder="Ссылка на картинку">
             <span class="popup__span-error url-input-error"></span>
             <button class="popup__save-button" type="submit">Создать</button>
         </form>
@@ -74,7 +74,7 @@
     </article>
   </template>
   </div>
-  <script src="./scripts/script.js"></script>
-  <script src="./scripts/validate.js"></script>
+  <script defer src="./scripts/script.js"></script>
+  <script defer src="./scripts/validate.js"></script>
 </body>
 </html>

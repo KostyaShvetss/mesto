@@ -4,4 +4,6 @@
   max-width: 400px;
   cursor: pointer;
   object-fit: cover;
+  background-color: #000;
+  color: #fff;
 }

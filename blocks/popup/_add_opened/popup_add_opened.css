@@ -1,4 +1,4 @@
-.popup_edit_opened {
+.popup_add_opened {
   visibility: visible;
   opacity: 1;
   transition: opacity 0.5s linear;

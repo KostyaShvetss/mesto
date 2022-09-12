@@ -2,21 +2,21 @@
 // Попапы
 const allPopups = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('.profile-popup');
-const editingPopup = document.querySelector('.edit-popup');
+const addCardPopup = document.querySelector('.add-popup');
 const ImagePopup = document.querySelector('.popup-image');
 // Кнопки
 const profileEditButton = document.querySelector('.profile__edit-button');
 const closeButtons = document.querySelectorAll('.popup__close');
 const profileAddButton = document.querySelector('.profile__add-button');
 // Формы и инпуты
-const popupForm = profilePopup.querySelector('.popup__form');
+const profilePopupForm = profilePopup.querySelector('.popup__form');
 const profileName = document.querySelector('.profile__name');
 const profileBio = document.querySelector('.profile__bio');
 const nameInput = profilePopup.querySelector('.popup__input_data_name');
 const bioInput = profilePopup.querySelector('.popup__input_data_bio');
 const popupInputName = document.querySelector('.popup__input_name');
 const popupInputURL = document.querySelector('.popup__input_url');
-const editPopupForm = document.querySelector('.edit-popup__form');
+const addCardPopupForm = document.querySelector('.add-popup__form');
 // Секция
 const elements = document.querySelector('.elements');
 // Темплейт
@@ -55,27 +55,30 @@ const initialCards = [
 
 // ФУНКЦИИ
 // Сохранить форму, добавить новую карточку
-const handleEditFormSubmit = e => {
+const handleAddFormSubmit = e => {
   e.preventDefault();
-  e.target.reset()
   const name = popupInputName.value;
   const url = popupInputURL.value;
   elements.prepend(сreateCard(name, url));
-  closePopup(editingPopup);
+  closePopup(addCardPopup);
+  e.target.reset();
 }
 
 // Создание карточки посредством клонирования template-тега
 // Также навесил обработчик, чтобы делать кнопку лайка активной при нажатии
 const сreateCard = (name, url) => {
-  const templateCard = template.querySelector('.element').cloneNode(true);
-  templateCard.querySelector('.element__image').src = url;
-  templateCard.querySelector('.element__image').alt = name;
-  templateCard.querySelector('.element__name').textContent = name;
+  const aNewCard = template.querySelector('.element').cloneNode(true);
+  const cardImage = aNewCard.querySelector('.element__image');
+  const cardText = aNewCard.querySelector('.element__name');
+  cardImage.src = url;
+  cardImage.alt = name;
+  cardText.textContent = name;
   // Открытие попапа картинки
-  const imageButton = templateCard.querySelector('.element__image');
+  const imageButton = aNewCard.querySelector('.element__image');
   imageButton.addEventListener('click', () => openImagePopup(name, url));
-  return templateCard;
+  return aNewCard;
 }
+
 // Функция открытия попапа картинки
 function openImagePopup(name, url) {
   imageContent.src = url;
@@ -97,15 +100,15 @@ allPopups.forEach((element) => {
 // Создание обработчика нажатия на кнопку Escape
 const handleKey = (evt) => {
   if (evt.key === 'Escape') {
-    const popupElement = document.querySelector('.popup_opened')
-    closePopup(popupElement);
+    const openedPopupElement = document.querySelector('.popup_opened')
+    closePopup(openedPopupElement);
   }
 }
 
 // Добавление карточек на страницу из массива initialCards
 const defaultCards = initialCards.forEach(item => elements.prepend(сreateCard(item.name, item.url)));
 
-// Отрыктие всплывающего окна, заполнение форм значениями из разметки
+// Отрыктие всплывающего окна
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleKey);
@@ -118,7 +121,7 @@ const closePopup = (popup) => popup.classList.remove('popup_opened');
 const openEditPopup = () => {
   nameInput.value = profileName.textContent;
   bioInput.value = profileBio.textContent;
-  openPopup(profilePopup)
+  openPopup(profilePopup);
 }
 
 const closeEditPopup = () => {
@@ -126,11 +129,11 @@ const closeEditPopup = () => {
 }
 
 const openAddPopup = () => {
-  openPopup(editingPopup);
+  openPopup(addCardPopup);
 }
 
 const closeAddPopup = () => {
-  closePopup(editingPopup);
+  closePopup(addCardPopup);
 }
 
 // Сохранить форму, перенести значения из input'а в разметку
@@ -145,16 +148,12 @@ const closeImagePopup = () => {
   closePopup(ImagePopup);
 }
 
-const pressLike = evt => {
-  if (evt.target.classList.contains('element__heart')) {
-    evt.target.classList.toggle('element__heart_active');
-  }
-}
-
-const deleteCard = evt => {
+const deleteCardAndPressLike = evt => {
   if (evt.target.classList.contains('element__trash-bin')) {
     const itemElement = evt.target.closest('.element');
     itemElement.remove();
+  } else if (evt.target.classList.contains('element__heart')) {
+    evt.target.classList.toggle('element__heart_active');
   }
 }
 
@@ -162,10 +161,11 @@ closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
+
+
 // Обработчики
 profileEditButton.addEventListener('click', openEditPopup);
 profileAddButton.addEventListener('click', openAddPopup);
-popupForm.addEventListener('submit', handleProfileFormSubmit);
-editPopupForm.addEventListener('submit', handleEditFormSubmit);
-cardContainer.addEventListener('click', pressLike);
-cardContainer.addEventListener('click', deleteCard);
+profilePopupForm.addEventListener('submit', handleProfileFormSubmit);
+addCardPopupForm.addEventListener('submit', handleAddFormSubmit);
+cardContainer.addEventListener('click', deleteCardAndPressLike);
