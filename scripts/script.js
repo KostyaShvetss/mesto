@@ -121,6 +121,7 @@ const closePopup = (popup) => popup.classList.remove('popup_opened');
 const openEditPopup = () => {
   nameInput.value = profileName.textContent;
   bioInput.value = profileBio.textContent;
+  makeButtonDisabled(profilePopup, validationObject);
   openPopup(profilePopup);
 }
 
@@ -129,7 +130,13 @@ const closeEditPopup = () => {
 }
 
 const openAddPopup = () => {
+  makeButtonDisabled(addCardPopup, validationObject);
   openPopup(addCardPopup);
+}
+
+const makeButtonDisabled = (popup, validationObject) => {
+  const submitButtonElement = popup.querySelector(validationObject.submitButtonSelector);
+  disableButton(submitButtonElement, validationObject);
 }
 
 const closeAddPopup = () => {
