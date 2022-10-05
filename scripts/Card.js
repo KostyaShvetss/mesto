@@ -23,11 +23,11 @@ export default class Card {
       this._openImagePopup(this._name, this._url);
     });
 
-    document.querySelector('.elements').addEventListener('click', (evt) => {
+    this._element.querySelector('.element__trash-bin').addEventListener('click', (evt) => {
       this._deleteCard(evt);
     });
 
-    document.querySelector('.elements').addEventListener('click', (evt) => {
+    this._element.querySelector('.element__heart').addEventListener('click', (evt) => {
       this._pressLike(evt);
     });
   }
