@@ -34,7 +34,7 @@ export default class FormValidator {
 
   _toggleButtonState () {
     if (this._hasInvalidInput()) {
-      this._disableButton();
+      this.disableButton();
     } else {
       this._enableButton();
     }
@@ -52,14 +52,16 @@ export default class FormValidator {
     });
   };
 
-  _disableButton () {
+  disableButton () {
     this._buttonElement.classList.add(this._validationObject.inactiveButtonClass);
-    this._buttonElement.setAttribute('disabled', 'true');
+    this._buttonElement.setAttribute('disabled', true);
   }
 
   _enableButton () {
     this._buttonElement.classList.remove(this._validationObject.inactiveButtonClass);
-    this._buttonElement.removeAttribute('disabled', 'true');
+    // Если убрать значения, то в консоли вылезает ошибка:
+    // Uncaught TypeError: Failed to execute 'removeAttribute' on 'Element': 1 argument required, but only 0 present.
+    this._buttonElement.removeAttribute('disabled', true);
   }
 
   enableValidation () {
