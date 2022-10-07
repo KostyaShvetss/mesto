@@ -59,9 +59,7 @@ export default class FormValidator {
 
   _enableButton () {
     this._buttonElement.classList.remove(this._validationObject.inactiveButtonClass);
-    // Если убрать значения, то в консоли вылезает ошибка:
-    // Uncaught TypeError: Failed to execute 'removeAttribute' on 'Element': 1 argument required, but only 0 present.
-    this._buttonElement.removeAttribute('disabled', true);
+    this._buttonElement.removeAttribute('disabled');
   }
 
   enableValidation () {

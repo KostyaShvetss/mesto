@@ -43,9 +43,7 @@ const handleAddFormSubmit = e => {
   e.preventDefault();
   const name = popupInputName.value;
   const url = popupInputURL.value;
-  const aNewCard = makeNewCard(name, url, '.template', openImagePopup);
-  const cardElement = aNewCard.generateCard();
-  elements.prepend(cardElement);
+  elements.prepend(makeNewCard(name, url, '.template', openImagePopup));
   closePopup(popupAddCard);
   e.target.reset();
 }
@@ -70,7 +68,7 @@ allPopups.forEach((element) => {
 });
 
 // Создание обработчика нажатия на кнопку Escape
-const handleKey = (evt) => {
+const handleKeydownEvent = (evt) => {
   if (evt.key === 'Escape') {
     const openedPopupElement = document.querySelector('.popup_opened')
     closePopup(openedPopupElement);
@@ -79,28 +77,26 @@ const handleKey = (evt) => {
 
 // Функция создания карточки
 const makeNewCard = (name, url, template, openImagePopup) => {
-  return new Card(name, url, template, openImagePopup);
+  const card = new Card(name, url, template, openImagePopup);
+  return card.generateCard();
 }
 
 // Добавление карточек на страницу из массива initialCards
 initialCards.forEach ((item) => {
-  const card = makeNewCard(item.name, item.url, '.template', openImagePopup);
-  const cardElement = card.generateCard();
-
-  elements.prepend(cardElement);
+  elements.prepend(makeNewCard(item.name, item.url, '.template', openImagePopup));
 })
 
 // ДЛЯ КАРТОЧКИ
 // Отрыктие всплывающего окна
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', handleKey);
+  document.addEventListener('keydown', handleKeydownEvent);
 }
 
 // Закрыть всплывающее окно
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened')
-  document.removeEventListener('keydown', handleKey);
+  document.removeEventListener('keydown', handleKeydownEvent);
 };
 
 // Открыть всплывающее окно добавления карточки
@@ -135,4 +131,3 @@ profileEditButton.addEventListener('click', openEditPopup);
 profileAddButton.addEventListener('click', openAddPopup);
 profilePopupForm.addEventListener('submit', handleProfileFormSubmit);
 popupAddCardForm.addEventListener('submit', handleAddFormSubmit);
-// cardContainer.addEventListener('click', deleteCardAndPressLike);
