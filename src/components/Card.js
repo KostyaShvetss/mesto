@@ -1,9 +1,9 @@
 export default class Card {
-  constructor (name, url, template, openImagePopup) {
-    this._name = name;
-    this._url = url;
+  constructor (config, template, handleCardClick) {
+    this._name = config.name;
+    this._url = config.url;
     this._template = template;
-    this._openImagePopup = openImagePopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate () {
@@ -29,10 +29,6 @@ export default class Card {
     this._elementImage = this._element.querySelector('.element__image');
     this._likeButton = this._element.querySelector('.element__heart');
 
-    this._elementImage.addEventListener('click', () => {
-      this._openImagePopup(this._name, this._url);
-    });
-
     this._element.querySelector('.element__trash-bin').addEventListener('click', () => {
       this._deleteCard();
     });
@@ -40,6 +36,10 @@ export default class Card {
     this._likeButton.addEventListener('click', () => {
       this._pressLike();
     });
+
+    this._elementImage.addEventListener('click', () => {
+      this._handleCardClick({name: this._name, url: this._url});
+    })
   }
 
   generateCard () {
