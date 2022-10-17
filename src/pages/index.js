@@ -8,6 +8,41 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import './index.css';
 
+const userInfo = new UserInfo({nameSelector: '.profile__name', bioSelector:'.profile__bio'});
+
+const popupWithImage = new PopupWithImage('.popup-image');
+
+const popupAddCard = new PopupWithForm ('.add-popup', (input) => {
+  section.addItem(makeNewCard(input));
+});
+popupAddCard.setEventListeners();
+const validateAddPopup = new FormValidator(validationObject, popupAddCard._inputForm);
+validateAddPopup.enableValidation();
+
+const profilePopup = new PopupWithForm ('.profile-popup', ({name, bio}) => {
+  userInfo.setUserInfo({name, bio});
+})
+profilePopup.setEventListeners();
+const validateProfilePopup = new FormValidator(validationObject, profilePopup._inputForm);
+validateProfilePopup.enableValidation();
+
+function openProfilePopup () {
+  const userInfoObject = userInfo.getUserInfo();
+  const {name, bio} = userInfoObject;
+  popupAddCard.setInputValues({name, bio});
+  profilePopup.openPopup();
+}
+
+// Функция создания карточки
+function makeNewCard ({name, url}) {
+  const card = new Card({name, url}, '.template', popupWithImage.openPopup.bind(popupWithImage));
+  return card.generateCard();
+}
+// Кнопки
+const profileEditButton = document.querySelector('.profile__edit-button');
+const profileAddButton = document.querySelector('.profile__add-button');
+// Формы и инпуты
+
 const section = new Section (
   {
    items: initialCards,
@@ -17,68 +52,8 @@ const section = new Section (
 );
 section.renderItems();
 
-// ПЕРЕМЕННЫЕ
-// Попапы
-// const profilePopup = document.querySelector('.profile-popup');
-// const popupAddCard = document.querySelector('.add-popup');
-// Валидация
-const userInfo = new UserInfo('.profile__name', 'profile__bio');
-
-const popupWithImage = new PopupWithImage('.popup-image');
-
-const popupAddCard = new PopupWithForm ('.add-popup', (item) => {
-  section.addItem(makeNewCard(item));
-});
-popupAddCard.setEventListeners();
-
-const validateAddPopup = new FormValidator(validationObject, popupAddCard._inputForm);
-validateAddPopup.enableValidation();
-
-// Функция создания карточки
-function makeNewCard ({name, url}) {
-  const card = new Card({name, url}, '.template', popupWithImage.openPopup.bind(popupWithImage));
-  return card.generateCard();
-}
-
-// const profilePopup = new PopupWithForm ('.profile-popup', handleProfileFormSubmit);
-// profilePopup.setEventListeners();
-
-
-// const validateProfilePopup = new FormValidator(validationObject, profilePopup._inputForm);
-// validateProfilePopup.enableValidation();
-
-// Кнопки
-const profileEditButton = document.querySelector('.profile__edit-button');
-const profileAddButton = document.querySelector('.profile__add-button');
-// Формы и инпуты
-
-// Секция
-const elements = document.querySelector('.elements');
-// Темплейт
-// Контейнер для карточек
-// const cardContainer = document.querySelector('.elements');
-// Массив с данными для карточек
-
-// ФУНКЦИИ
-// Сохранить форму, добавить новую карточку
-// function handleAddFormSubmit (e) {
-//   const name = popupInputName.value;
-//   const url = popupInputURL.value;
-//   elements.prepend(makeNewCard(name, url, '.template', popupWithImage.openPopup.bind(popupWithImage)));
-//   popupAddCard.closePopup();
-// }
-
-
-// Сохранить форму, перенести значения из input'а в разметку
-// const handleProfileFormSubmit = evt => {
-//   evt.preventDefault();
-//   profileName.textContent = nameInput.value;
-//   profileBio.textContent = bioInput.value;
-//   profilePopup.closePopup();
-// }
-
 // Обработчики
 profileAddButton.addEventListener('click', popupAddCard.openPopup.bind(popupAddCard));
-// profileEditButton.addEventListener('click', profilePopup.openPopup.bind(profilePopup));
+profileEditButton.addEventListener('click', openProfilePopup);
 
 popupWithImage.setEventListeners();
