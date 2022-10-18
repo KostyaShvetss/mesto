@@ -8,6 +8,7 @@ import UserInfo from '../components/UserInfo.js';
 import './index.css';
 // Для ревью: многие ошибки, например перенос переменных в utils.js я сделал и залил на гитхаб
 // но на ревью отправилась предыдущая версия работы, где эти ошибки еще не были исправлены
+// Огромное спасибо за подробные комментарии!
 const userInfo = new UserInfo({nameSelector: '.profile__name', bioSelector:'.profile__bio'});
 
 const popupWithImage = new PopupWithImage('.popup-image');
