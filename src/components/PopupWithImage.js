@@ -16,8 +16,5 @@ export default class PopupWithImage extends Popup {
 
   closePopup() {
     super.closePopup();
-    this._elementImage.src = '';
-    this._elementImage.alt = '';
-    this._elementCaption.textContent = '';
   }
 }

@@ -48,7 +48,7 @@ module.exports = {
         },
         'postcss-loader']
       },
-      ]
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({

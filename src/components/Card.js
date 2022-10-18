@@ -2,13 +2,13 @@ export default class Card {
   constructor (config, template, handleCardClick) {
     this._name = config.name;
     this._url = config.url;
-    this._template = template;
+    this._templateSelector = template;
     this._handleCardClick = handleCardClick;
   }
 
   _getTemplate () {
     const templateElement = document
-    .querySelector(this._template)
+    .querySelector(this._templateSelector)
     .content
     .querySelector('.element')
     .cloneNode(true);
@@ -17,11 +17,11 @@ export default class Card {
   }
 
   _deleteCard () {
-      this._element.remove();
-      this._element = null;
+    this._element.remove();
+    this._element = null;
   }
 
-  _pressLike () {
+  _handleLikeCard () {
     this._likeButton.classList.toggle('element__heart_active');
   }
 
@@ -34,7 +34,7 @@ export default class Card {
     });
 
     this._likeButton.addEventListener('click', () => {
-      this._pressLike();
+      this._handleLikeCard();
     });
 
     this._elementImage.addEventListener('click', () => {

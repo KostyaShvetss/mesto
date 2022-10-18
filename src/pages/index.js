@@ -6,35 +6,36 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import './index.css';
+// Для ревью: многие ошибки, например перенос переменных в utils.js я сделал и залил на гитхаб
+// но на ревью отправилась предыдущая версия работы, где эти ошибки еще не были исправлены
 const userInfo = new UserInfo({nameSelector: '.profile__name', bioSelector:'.profile__bio'});
 
 const popupWithImage = new PopupWithImage('.popup-image');
 
-const popupAddCard = new PopupWithForm ('.add-popup', (input) => {
-  section.addItem(makeNewCard(input));
+const popupAddCard = new PopupWithForm ('.add-popup', (cardData) => {
+  cardSection.addItem(makeNewCard(cardData));
 });
 popupAddCard.setEventListeners();
-const validateAddPopup = new FormValidator(validationObject, popupAddCard._inputForm);
-validateAddPopup.enableValidation();
+const cardFormValidator = new FormValidator(validationObject, popupAddCard._inputForm);
+cardFormValidator.enableValidation();
 
 const profilePopup = new PopupWithForm ('.profile-popup', ({name, bio}) => {
   userInfo.setUserInfo({name, bio});
 })
 profilePopup.setEventListeners();
-const validateProfilePopup = new FormValidator(validationObject, profilePopup._inputForm);
-validateProfilePopup.enableValidation();
+const profileFormValidator = new FormValidator(validationObject, profilePopup._inputForm);
+profileFormValidator.enableValidation();
 
 function openCardPopup () {
-  validateAddPopup.disableButton();
+  cardFormValidator.disableButton();
   popupAddCard.openPopup();
 }
 
 function openProfilePopup () {
   const userInfoObject = userInfo.getUserInfo();
-  const {name, bio} = userInfoObject;
-  profilePopup.setInputValues({name, bio});
+  profilePopup.setInputValues(userInfoObject);
   profilePopup.openPopup();
-  validateProfilePopup.makeFormVoid();
+  profileFormValidator.resetValidation();
 }
 
 // Функция создания карточки
@@ -43,14 +44,14 @@ function makeNewCard ({name, url}) {
   return card.generateCard();
 }
 
-const section = new Section (
+const cardSection = new Section (
   {
    items: initialCards,
-   renderer: item => section.addItem(makeNewCard(item))
+   renderer: item => cardSection.addItem(makeNewCard(item))
  },
   '.elements'
 );
-section.renderItems();
+cardSection.renderItems();
 
 // Обработчики
 profileAddButton.addEventListener('click', openCardPopup);
