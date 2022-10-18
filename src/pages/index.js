@@ -7,6 +7,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import './index.css';
+import { validate } from 'schema-utils';
 
 const userInfo = new UserInfo({nameSelector: '.profile__name', bioSelector:'.profile__bio'});
 
@@ -26,11 +27,17 @@ profilePopup.setEventListeners();
 const validateProfilePopup = new FormValidator(validationObject, profilePopup._inputForm);
 validateProfilePopup.enableValidation();
 
+function openCardPopup () {
+  validateAddPopup.disableButton();
+  popupAddCard.openPopup();
+}
+
 function openProfilePopup () {
   const userInfoObject = userInfo.getUserInfo();
   const {name, bio} = userInfoObject;
-  popupAddCard.setInputValues({name, bio});
+  profilePopup.setInputValues({name, bio});
   profilePopup.openPopup();
+  validateProfilePopup.makeFormVoid();
 }
 
 // Функция создания карточки
@@ -53,7 +60,7 @@ const section = new Section (
 section.renderItems();
 
 // Обработчики
-profileAddButton.addEventListener('click', popupAddCard.openPopup.bind(popupAddCard));
+profileAddButton.addEventListener('click', openCardPopup);
 profileEditButton.addEventListener('click', openProfilePopup);
 
 popupWithImage.setEventListeners();

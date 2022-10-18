@@ -2,6 +2,8 @@ export default class FormValidator {
   constructor(validationObject, element) {
     this._validationObject = validationObject;
     this._element = element;
+    this._inputSelector = validationObject.inputSelector;
+    this._inputList = document.querySelectorAll(this._inputSelector);
   }
 
   _hasInvalidInput () {
@@ -69,4 +71,10 @@ export default class FormValidator {
     this._setEventListeners();
   };
 
+  makeFormVoid () {
+    this._inputList.forEach(input => {
+      this._hideInputError(input);
+      this.disableButton();
+    })
+  }
 }
