@@ -54,12 +54,12 @@ export default class FormValidator {
 
   disableButton () {
     this._buttonElement.classList.add(this._validationObject.inactiveButtonClass);
-    this._buttonElement.disabled;
+    this._buttonElement.disabled = true;
   }
 
   _enableButton () {
     this._buttonElement.classList.remove(this._validationObject.inactiveButtonClass);
-    this._buttonElement.disabled = '...';
+    this._buttonElement.disabled = false;
   }
 
   enableValidation () {
