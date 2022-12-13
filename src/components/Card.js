@@ -78,7 +78,6 @@ export default class Card {
     this.setLikes(this._likes);
     if (this._ownerId !== this._userId) {
       this._element.querySelector('.element__trash-bin').style.display = 'none';
-      console.log('Это не твои карточки');
     }
 
     return this._element;

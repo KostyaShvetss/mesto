@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas:
   "name button"
-  "bio bio";
+  "about about";
   gap: 8px 20px;
 }
 
@@ -16,7 +16,7 @@
   .profile__info {
     grid-template-areas:
     ". name button"
-    "bio bio bio";
+    "about about about";
     grid-template-columns: repeat(3, 1fr);
   }
 }

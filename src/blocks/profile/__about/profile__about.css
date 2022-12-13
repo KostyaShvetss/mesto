@@ -1,22 +1,22 @@
-.profile__bio {
+.profile__about {
   margin: 0;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  grid-area: bio;
+  grid-area: about;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
 @media screen and (max-width: 778px) {
-  .profile__bio {
+  .profile__about {
     text-align: center;
   }
 }
 
 @media screen and (max-width: 395px) {
-  .profile__bio {
+  .profile__about {
     font-size: 14px;
     line-height: 17px;
   }

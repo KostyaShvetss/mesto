@@ -18,13 +18,17 @@ class Api {
     .catch(console.log);
   }
 
-  editProfile(name, about) {
+  getInitialData () {
+    return Promise.all([this.getProfile(), this.getInitialCards()]);
+  }
+
+  editProfile(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name,
-        about,
+        name: data.name,
+        about: data.about,
       })
     }).then((res) => res.ok ? res.json() : Promise.reject(res.status))
     .catch(console.log);
@@ -66,8 +70,8 @@ class Api {
     .catch(console.log);
   }
 
-  changeAvatar (id, {avatar}) {
-    return fetch(`${this._baseUrl}/${id}/users/me/avatar`, {
+  changeAvatar (avatar) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
