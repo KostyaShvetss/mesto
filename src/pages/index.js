@@ -105,7 +105,6 @@ function openProfilePopup () {
 }
 
 function openAvatarChangePopup () {
-  const avatar = userInfo.getUserAvatar();
   avatarPopup.openPopup();
   avatarFormValidator.resetValidation();
 }
