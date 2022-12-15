@@ -125,11 +125,13 @@ const makeNewCard = (data) => {
       (id) => {
         popupWithConfirm.openPopup();
         popupWithConfirm.changeSubmitHandler(() => {
+        popupWithConfirm.renderLoading(true);
          api.deleteCard(id)
           .then(res => {
         card.deleteCard();
+        popupWithConfirm.closePopup();
           }).finally(() => {
-            popupWithConfirm.closePopup();
+            popupWithConfirm.renderLoading(false);
           } )
         })
       },
