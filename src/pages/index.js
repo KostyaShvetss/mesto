@@ -50,12 +50,11 @@ const popupAddCard = new PopupWithForm ('.add-popup', (cardData) => {
   popupAddCard.renderLoading(true);
   api.addCard({name: cardData.name, link: cardData.url, id: cardData._id})
   .then(res => {
-    console.log(res.owner._id);
-    cardSection.addItem(makeNewCard(cardData));
+    cardSection.addItem(makeNewCard(res));
+    popupAddCard.closePopup();
   }).catch(err => console.log(err))
   .finally(() => {
     popupAddCard.renderLoading(false);
-    popupAddCard.closePopup();
   });
 });
 

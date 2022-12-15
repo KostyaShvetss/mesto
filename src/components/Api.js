@@ -12,22 +12,20 @@ class Api {
     }
   }
 
+  getInitialData () {
+    return Promise.all([this.getProfile(), this.getInitialCards()]);
+  }
+
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     }).then((res) => this._checkResponse(res))
-    .catch(console.log);
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     }).then((res) => this._checkResponse(res))
-    .catch(console.log);
-  }
-
-  getInitialData () {
-    return Promise.all([this.getProfile(), this.getInitialCards()]);
   }
 
   editProfile(data) {
@@ -39,7 +37,6 @@ class Api {
         about: data.about,
       })
     }).then((res) => this._checkResponse(res))
-    .catch(console.log);
   }
 
   addCard ({name, link}) {
@@ -51,7 +48,6 @@ class Api {
         link,
       })
     }).then((res) => this._checkResponse(res))
-    .catch(console.log);
   }
 
   deleteCard (id) {
@@ -59,7 +55,6 @@ class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => this._checkResponse(res))
-    .catch(console.log);
   }
 
   deleteLike (id) {
@@ -67,7 +62,6 @@ class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => this._checkResponse(res))
-    .catch(console.log);
   }
 
   putLike (id) {
@@ -75,7 +69,6 @@ class Api {
       method: "PUT",
       headers: this._headers,
     }).then((res) => this._checkResponse(res))
-    .catch(console.log);
   }
 
   changeAvatar (avatar) {
@@ -86,7 +79,6 @@ class Api {
         avatar,
       })
     }).then((res) => this._checkResponse(res))
-    .catch(console.log);
   }
 }
 
