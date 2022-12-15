@@ -31,7 +31,7 @@ export default class Card {
     this._elementImage = this._element.querySelector('.element__image');
     this._likeButton = this._element.querySelector('.element__heart');
 
-    this._element.querySelector('.element__trash-bin').addEventListener('click', () => {
+    this._trashBin.addEventListener('click', () => {
       this._handleDeleteClick(this._id);
     });
 
@@ -71,13 +71,14 @@ export default class Card {
 
   generateCard () {
     this._element = this._getTemplate();
+    this._trashBin = this._element.querySelector('.element__trash-bin');
     this._setEventListeners();
     this._elementImage.src = this._url;
     this._elementImage.alt = this._name;
     this._element.querySelector('.element__name').textContent = this._name;
     this.setLikes(this._likes);
     if (this._ownerId !== this._userId) {
-      this._element.querySelector('.element__trash-bin').style.display = 'none';
+      this._trashBin.style.display = 'none';
     }
 
     return this._element;

@@ -16,10 +16,9 @@ const cardSection = new Section (
 );
 
 let userId;
-const initialData = [api.getProfile(), api.getInitialCards()];
 
 // Получение даты юзера и карточек с сервера
-Promise.all(initialData)
+api.getInitialData()
 .then(([userData, cards]) => {
   userInfo.setUserInfo(userData);
     userInfo.setUserAvatar(userData.avatar);
@@ -36,12 +35,14 @@ const avatarPopup = new PopupWithForm('.avatar-popup', (cardData) => {
   avatarPopup.renderLoading(true);
   api.changeAvatar(cardData.avatar)
   .then(res => {
-    console.log('avatar', res.avatar);
-    userInfo.setUserAvatar(res.avatar)})
-  .catch(err => console.log('Проблема с аватаркой, ошибка:', err))
-  .finally(() => {
-    avatarPopup.renderLoading(false);
+    userInfo.setUserAvatar(res.avatar);
     avatarPopup.closePopup();})
+    // комменатарий для ревьюера: интересно, считается ли нормальной практикой выводить алерт с ошибкой?
+    //  вряд ли же обычный пользователь будет смотреть в консоль, чтобы понять, что к чему
+    // можно небольшой комментарий, пожалуйста, как в таких ситуациях разработчики поступают?
+  .catch(err => alert('Проблема с аватаркой'))
+  .finally(() => {
+    avatarPopup.renderLoading(false);})
   }
 );
 
@@ -49,15 +50,16 @@ const popupAddCard = new PopupWithForm ('.add-popup', (cardData) => {
   popupAddCard.renderLoading(true);
   api.addCard({name: cardData.name, link: cardData.url, id: cardData._id})
   .then(res => {
-    cardSection.addItem(makeNewCard(cardData));;
-  })
+    console.log(res.owner._id);
+    cardSection.addItem(makeNewCard(cardData));
+  }).catch(err => console.log(err))
   .finally(() => {
     popupAddCard.renderLoading(false);
     popupAddCard.closePopup();
   });
 });
 
-const popupWithConfirm = new PopupWithForm ('.delete-card-popup')
+const popupWithConfirm = new PopupWithForm ('.delete-card-popup');
 
 const profilePopup = new PopupWithForm ('.profile-popup', ((cardData) => {
   profilePopup.renderLoading(true);
@@ -65,9 +67,10 @@ const profilePopup = new PopupWithForm ('.profile-popup', ((cardData) => {
   .then(({name, about}) => {
     profilePopup.renderLoading(true);
     userInfo.setUserInfo({name, about});
-  }).finally(() => {
-    profilePopup.renderLoading(false);
     profilePopup.closePopup();
+  }).catch(err => console.log(err))
+  .finally(() => {
+    profilePopup.renderLoading(false);
   });
 })
 )
