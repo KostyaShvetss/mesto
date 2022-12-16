@@ -11,7 +11,7 @@ import './index.css';
 // Объявление секции
 
 const cardSection = new Section (
-  item => cardSection.addItem(makeNewCard(item)),
+  item => cardSection.prependItem(makeNewCard(item)),
   '.elements'
 );
 
@@ -37,9 +37,6 @@ const avatarPopup = new PopupWithForm('.avatar-popup', (cardData) => {
   .then(res => {
     userInfo.setUserAvatar(res.avatar);
     avatarPopup.closePopup();})
-    // комменатарий для ревьюера: интересно, считается ли нормальной практикой выводить алерт с ошибкой?
-    //  вряд ли же обычный пользователь будет смотреть в консоль, чтобы понять, что к чему
-    // можно небольшой комментарий, пожалуйста, как в таких ситуациях разработчики поступают?
   .catch(err => alert('Проблема с аватаркой'))
   .finally(() => {
     avatarPopup.renderLoading(false);})
@@ -50,7 +47,7 @@ const popupAddCard = new PopupWithForm ('.add-popup', (cardData) => {
   popupAddCard.renderLoading(true);
   api.addCard({name: cardData.name, link: cardData.url, id: cardData._id})
   .then(res => {
-    cardSection.addItem(makeNewCard(res));
+    cardSection.prependItem(makeNewCard(res));
     popupAddCard.closePopup();
   }).catch(err => console.log(err))
   .finally(() => {
@@ -127,10 +124,12 @@ const makeNewCard = (data) => {
         popupWithConfirm.changeSubmitHandler(() => {
         popupWithConfirm.renderLoading(true);
          api.deleteCard(id)
-          .then(res => {
-        card.deleteCard();
-        popupWithConfirm.closePopup();
-          }).finally(() => {
+          .then(() => {
+            card.deleteCard();
+            popupWithConfirm.closePopup();
+          })
+          .catch(err => console.log(err))
+          .finally(() => {
             popupWithConfirm.renderLoading(false);
           } )
         })
@@ -139,9 +138,11 @@ const makeNewCard = (data) => {
         if(card.isLiked()) {
           api.deleteLike(id)
           .then(res => card.setLikes(res.likes))
+          .catch(err => console.log(err))
         } else {
-          api.putLike(id).then((res) => {
-            card.setLikes(res.likes)})
+          api.putLike(id)
+          .then((res) => {card.setLikes(res.likes)})
+          .catch(err => console.log(err))
         }
       }
     );
